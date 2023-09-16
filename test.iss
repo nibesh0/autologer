@@ -7,7 +7,7 @@ OutputBaseFilename=AutoLogerSetup
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
-
+WizardImageFile=C:\Users\nibes\Source\Repos\autologer\res\icon.bmp
 [Files]
 Source: "C:\Users\nibes\Source\Repos\autologer\dist\cred.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\nibes\Source\Repos\autologer\dist\set.exe"; DestDir: "{app}"; Flags: ignoreversion
