@@ -5,7 +5,7 @@ def req(id,passwd):
     url = 'https://192.168.2.190/userSense'
     data = {
         'user': f'{id}',
-        'passwd': f'{urllib.parse.quote(passwd)}',
+        'passwd': f'{(passwd)}',
         'submit': 'Login',
         'actualurl': 'https://192.168.2.190/userlogin/'
     }

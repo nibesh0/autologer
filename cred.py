@@ -23,7 +23,6 @@ def store_credentials():
     if confirmation == "yes":
         key_filename = os.path.join(key_folder, "encryption_key.key")
         filename = os.path.join(key_folder, "credentials.enc")
-
         key = enc.generate_key()
         enc.store_key(key_filename, key)
 

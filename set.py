@@ -1,12 +1,9 @@
 import sys
-import os
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction
+import time
 from PIL import Image
 from ping3 import ping
 from enc import enc
 from req import req
-import time
 
 def login(ip_address):
     conn = None
@@ -32,50 +29,11 @@ def login(ip_address):
         print("General failure:\n your data limit has been exhausted or multiple devices are using your user_id")
         return -1
 
-def check_connection(ip_address, Uid):
-    conn = ping(ip_address)
-    if conn is not None:
-        return f"Logged In as : {Uid}"
-    else:
-        return "Connection failed"
-
-def check_connection_action(icon, ip_address, Uid):
-    status = check_connection(ip_address, Uid)
-    icon.setToolTip(status)
-
-def main():
-    app = QApplication(sys.argv)
-    app.setQuitOnLastWindowClosed(False)
-
+if __name__ == "__main__":
     ip_address = '192.168.2.190'
-
-    
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-
-   
-    image_path = os.path.join(script_dir, "res/image.jpeg")
-
-    icon = QSystemTrayIcon()
-    icon.setIcon(QIcon(image_path))  # Use the corrected absolute path
-    menu = QMenu()
-    initial_status = "Connecting in"
-
-    check_action = QAction("Check Connection")
-    check_action.triggered.connect(lambda: check_connection_action(icon, ip_address, Uid))  
-    exit_action = QAction("Exit")
-    exit_action.triggered.connect(app.quit)
-
-    menu.addAction(check_action)
-    menu.addAction(exit_action)
-
-    icon.setContextMenu(menu)
-    icon.show()
-    icon.setToolTip(initial_status) 
     Uid = login(ip_address)
 
-    initial_status = f"Logged In as : {Uid}"
-    icon.setToolTip(initial_status) 
-    sys.exit(app.exec_())
-
-if __name__ == "__main__":
-    main()
+    if Uid == -1:
+        print("Connection failed")
+    else:
+        print(f"Logged In as : {Uid}")
