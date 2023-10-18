@@ -48,11 +48,17 @@ def store_credentials():
 root = tk.Tk()
 root.title("AutoLoger")
 root.configure(bg="black")
+try:
+    image_path = r"res\image.jpeg"
+    img = Image.open(image_path)
+    img = img.resize((200, 150))
+    photo = ImageTk.PhotoImage(img)
+except:
+    print("err")
+    photo = None
 
-image_path = r"res\image.jpeg"
-img = Image.open(image_path)
-img = img.resize((200, 150))
-photo = ImageTk.PhotoImage(img)
+
+
 
 image_label = tk.Label(root, image=photo, bg="black")
 image_label.pack()

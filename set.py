@@ -18,7 +18,7 @@ def login(ip_address):
     key_file = "C:/Program Files (x86)/AutoLoger/key/encryption_key.key"
     file = "C:/Program Files (x86)/AutoLoger/key/credentials.enc" 
     Uid, passwd = enc.retrieve_credentials(file, key_file)
-    status_code, check = req.req(Uid, passwd)
+    status_code, check = req(Uid, passwd)
     if check == 0:
         print("success")
         return Uid
